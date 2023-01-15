@@ -1,0 +1,28 @@
+{
+  "users": [
+    {
+      "email": "vale@vale.com",
+      "password": "$2a$10$JchhT5i7DGTkYpaiqgyK9OFCKI5l9Z5STO1Q9Wn0KsEa5cneiY5za",
+      "nome": "Valeria",
+      "id": 1
+    },
+    {
+      "email": "bryan@bryan.com",
+      "password": "$2a$10$4RzsFLSE3TMoJL6Jp1OYAOF9QkQyuR8vOxObLbOQ3pl.l6aTDTue6",
+      "nome": "Bryan",
+      "id": 2
+    },
+    {
+      "email": "nino@gmail.com",
+      "password": "$2a$10$3Ahfu8DvaHF9fG07dTiIdeMzt6a4JhlUrwODyC2.uXT95FDsajK76",
+      "nome": "Nino",
+      "id": 3
+    },
+    {
+      "email": "maria@gmail.com",
+      "password": "$2a$10$iVrP73c32Rx/7o/UdFo31u.0MJmwoDnQmuOMdbs6ihc08mQJKMrx.",
+      "nome": "Maria",
+      "id": 4
+    }
+  ]
+}

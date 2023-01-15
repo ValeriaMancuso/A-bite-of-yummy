@@ -1,0 +1,33 @@
+<h1>My meal plan</h1>
+<div class="container">
+    <form #addList="ngForm" (ngSubmit)="postList(addList)">
+        <label for="titolo" class="ms-1">Plate Name</label>
+        <input id="item" type="text" class="ms-1" name="title" ngModel>
+        <label for="servings" class="ms-1">Servings</label>
+        <input id="servings" type="text" class="ms-1" name="servings" ngModel>
+        <label for="minutes" class="ms-1">Ready in</label>
+        <input id="minutes" type="text" class="ms-1" name="minutes" ngModel>
+        <button type="submit" class="btn btn-primary ms-2">Add Meal</button>
+    </form>
+</div>
+<div class="container mt-3" >
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Title</th>
+                <th scope="col">Servings</th>
+                <th scope="col">Ready in</th>
+            </tr>
+        </thead>
+        <tbody *ngFor="let item of items">
+            <tr>
+                <td>{{item.title}}</td>
+                <td>{{item.servings}}</td>
+                <td>{{item.minutes}} minutes</td>
+                <td><button type="button" class="btn btn-danger" (click)="delete(item.id)"><i class="bi bi-trash"></i></button></td>
+            </tr>
+
+        </tbody>
+    </table>
+
+</div>

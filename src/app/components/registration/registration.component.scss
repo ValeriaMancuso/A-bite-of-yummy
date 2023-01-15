@@ -1,0 +1,25 @@
+.form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 300px;
+    margin: auto;
+    text-align: center;
+  }
+
+  .example-full-width {
+    width: 300px;
+  }
+
+  .example-container mat-form-field + mat-form-field {
+    margin-left: 8px;
+  }
+input {
+    height: 50px;
+    background-color: aliceblue;
+    border-bottom: 1px solid black;
+}
+button {
+    margin-top: 15px;
+    margin-bottom: 20px;
+    padding: 10px;
+}

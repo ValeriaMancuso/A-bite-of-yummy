@@ -1,0 +1,16 @@
+h1 {
+    text-align: center;
+    font-style: italic;
+}
+
+mat-sidenav {
+    width: 180px;
+    border-right: 1px solid black;
+    padding: 10px;
+}
+mat-sidenav-container{
+    height: 100%;
+}
+mat-sidenav-content {
+    padding: 5px;
+}

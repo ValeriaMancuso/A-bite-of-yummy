@@ -1,0 +1,13 @@
+<h1>Recipes</h1>
+<div class="container d-flex flex-wrap">
+    <div *ngFor="let recipe of recipes" class="card m-1" style="width: 18rem;">
+        <h3 class="card-title">{{recipe.title}}</h3>
+        <img src="{{recipe.image}}" class="card-img-top img-fluid">
+        <div class="card-body">
+            <button type="button" class="btn btn-primary" [routerLink]="['/detail',recipe.id]" routerLinkActive="router-link-active" >Details</button>
+            <a class="ms-2" (click)="toggleFav(recipe.id)">
+                <i class="bi" [ngClass]="{'bi-heart' : !recipe.like, 'bi-heart-fill': recipe.like }"></i>
+            </a>
+        </div>
+    </div>
+</div>
