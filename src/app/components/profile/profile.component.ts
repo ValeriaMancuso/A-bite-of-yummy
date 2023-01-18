@@ -4,6 +4,8 @@ import {  MealPlanService, List} from 'src/app/model/meal-plan.service';
 import { Subscription } from 'rxjs';
 import { Favorite } from 'src/app/model/recipe.service';
 import { Info } from 'src/app/model/meal-plan.service';
+import { AuthData, AuthService } from 'src/app/auth/auth.service';
+
 
 @Component({
   selector: 'app-profile',
@@ -11,64 +13,45 @@ import { Info } from 'src/app/model/meal-plan.service';
   styleUrls: ['./profile.component.scss']
 })
 export class ProfileComponent implements OnInit {
+  user!: AuthData | null;
   sub! : Subscription
   items: List[] = [];
+  favorites: Favorite[] = [];
   favs: Favorite[] = [];
   info: Info[] = []
-  idRecipe: Favorite[] | undefined;
+  idRecipe!: number;
+  userFavs: Info[] = [];
 
-  user!: {
-    id: number,
-    email: string
-  }
 
-  infos: Partial<Favorite> = {
-    recipeId: 0
-  }
+  idUser = JSON.parse(localStorage.getItem('UserData')!).id;
 
-  constructor(private plan: MealPlanService) { }
+
+  constructor(private plan: MealPlanService, private authSrv: AuthService) { }
 
   ngOnInit(): void {
-    //this.connectUser();
-    this.getList()
-    this.getFav()
-    this.user = JSON.parse(localStorage.getItem('UserData')!)
-    if (this.user) {
-      this.getInfo(this.infos)
-    }
+    this.authSrv.user$.subscribe((user) => {
+      this.user = user;
+    });
 
+    this.getList();
+    this.getFav();
+    setTimeout(() => {
+      this.getInfo()
+    }, 1000);
+    console.log(this.userFavs)
 
   }
-
-  /*connectUser() {
-    this.plan.connect().subscribe(res => {
-      localStorage.setItem('data', JSON.stringify(res))
-      console.log(res)
-    })
-
-  }*/
-
-  getInfo(id: Favorite) {
-      if (this.user) {
-        this.plan.getInfo(this.recipeId).subscribe(data => {
-          this.info = data;
-        })
-        console.log(this.info);
-      }
-    }
-
 
   postList(addList: NgForm) {
-    this.plan.postList(addList.value).subscribe()
+        this.plan.postList(addList.value).subscribe()
+    }
 
-  }
   getList() {
     this.plan.getList().subscribe(data => {
-      this.items = data;
+      this.items = data
       console.log(this.items)
     })
   }
-
 
   delete(id: number) {
     this.sub = this.plan.delete(id).subscribe(() => {
@@ -77,9 +60,23 @@ export class ProfileComponent implements OnInit {
   }
 
   getFav() {
-    this.plan.getFav().subscribe(data => {
-      this.favs = data
-      console.log(data)
+      this.plan.getFav().subscribe(data => {
+      this.favs = data.filter(item => this.idUser == item.userId)
+      console.log(this.favs)
     })
+
   }
+
+  getInfo() {
+    this.favs.forEach(m => {
+      this.plan.getInfo(m.recipeId).subscribe(data => {
+      this.info = data
+      this.userFavs.push(data)
+      console.log(this.info);
+
+    })})
+  }
+
 }
+
+

@@ -1,31 +1,21 @@
-<h2>Registration</h2>
-
-<form class="form" #form = "ngForm" (ngSubmit)="onSubmit(form)">
-    <div>
-      <mat-form-field appearance="fill" class="example-full-width">
-        <mat-label>Enter your name</mat-label>
-        <input matInput ngModel name="nome">
-      </mat-form-field>
-    </div>
-    <div class="example-container">
-      <mat-form-field appearance="fill" class="example-full-width">
-        <mat-label>Enter your email</mat-label>
-        <input matInput placeholder="pat@example.com" email required ngModel name="email">
-        <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
-      </mat-form-field>
-    </div>
-
-    <div class="example-container">
-      <mat-form-field appearance="fill" class="example-full-width">
-        <mat-label>Enter your password</mat-label>
-        <input matInput [type]="hide ? 'password' : 'text'" ngModel name="password">
-
-      </mat-form-field>
-    </div>
-
-    <div class="example-button-row">
-
-      <button mat-raised-button color="warn" type="submit" class="example-full-width">Submit</button>
-
-    </div>
-  </form>
+<div class="container">
+  <h2>Registration</h2>
+  <div class="container">
+    <form #form="ngForm" (ngSubmit)="onSubmit(form)">
+      <div class="form-group">
+        <label for="name">Nome Completo</label>
+        <input name="name" required ngModel class="form-control" id="name" type="text">
+      </div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input name="email" class="form-control" required ngModel id="email" type="email" />
+      </div>
+      <div class="form-group">
+        <label for="pass">Password</label>
+        <input name="password" class="form-control" required ngModel id="pass" type="password" />
+      </div>
+      <button type="submit" [disabled]="form.invalid" class="btn btn-primary mt-4">Registrati
+      </button>
+    </form>
+  </div>
+</div>

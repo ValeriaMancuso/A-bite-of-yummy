@@ -15,6 +15,7 @@ export class TokenInterceptor implements HttpInterceptor {
   constructor(private authSrv: AuthService) {}
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
+
     return this.authSrv.user$.pipe(take(1),switchMap(user=>{
       if (!user) {
         return next.handle(request)
@@ -22,10 +23,13 @@ export class TokenInterceptor implements HttpInterceptor {
       }
       const newReq = request.clone({
         headers:request.headers.set('Authorization',`Bearer ${user.accessToken}`)
-      })
 
+      })
+      console.log(newReq)
       return next.handle(newReq)
+
     }));
+
   }
 }
 

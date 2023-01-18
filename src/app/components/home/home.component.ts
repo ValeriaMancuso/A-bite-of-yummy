@@ -32,10 +32,11 @@ export class HomeComponent implements OnInit {
     this.user = JSON.parse(localStorage.getItem('UserData')!)
     if (this.user) {
     this.getRecipes();
-    }
 
+    }
     this.getFav();
-    console.log(this.idUser)
+
+
   }
 
   getFav() {
@@ -51,7 +52,8 @@ export class HomeComponent implements OnInit {
     })).subscribe(()=> {
     this.recSrv.getFav().pipe(tap(data => {
     this.favorites = data;
-    console.log(this.favorites);
+    localStorage.setItem('favorite', JSON.stringify(data));
+
     let k=0;
     this.favorites.forEach(f=>{
       if (f.userId==this.idUser)
@@ -114,7 +116,6 @@ export class HomeComponent implements OnInit {
 
   toggleFav(idRecipe: number) {
     let curPos = 0;
-    //this.readStream();
     this.recipes.forEach((m, i) => {
       if (m.id == idRecipe) {
         this.recipes[i].like = !this.recipes[i].like;

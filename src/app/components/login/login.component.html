@@ -1,27 +1,16 @@
-<h2>Login</h2>
-
-<form class="form" #form="ngForm" (ngSubmit)="onSubmit(form)">
-    <div class="example-container">
-        <mat-label>Enter your email</mat-label>
-        <mat-form-field appearance="fill" class="example-full-width">
-            <input matInput placeholder="pat@example.com" required ngModel name="email">
-            <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
-        </mat-form-field>
-    </div>
-
-    <div class="example-container">
-        <mat-label>Enter your password</mat-label>
-        <mat-form-field appearance="fill" class="example-full-width">
-            <input matInput [type]="hide ? 'password' : 'text'" ngModel name="password">
-
-        </mat-form-field>
-    </div>
-
-    <div class="example-button-row">
-
-        <button mat-raised-button color="warn" type="submit" class="example-full-width"
-            [disabled]="!form.valid">Submit</button>
-
-    </div>
-    <a [routerLink]="['/registration']">Sign Up</a>
-</form>
+<div class="container">
+  <h2>Login</h2>
+  <div class="container">
+    <form #form="ngForm" (ngSubmit)="onSubmit(form)">
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input name="email" class="form-control" required ngModel id="email" type="email" />
+      </div>
+      <div class="form-group">
+        <label for="pass">Password</label>
+        <input name="password" required class="form-control" ngModel id="pass" type="password" />
+      </div>
+      <button type="submit" [disabled]="form.invalid" class="btn btn-primary mt-4">Accedi</button>
+    </form>
+  </div>
+</div>
