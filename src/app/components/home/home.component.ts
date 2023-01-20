@@ -15,6 +15,7 @@ export class HomeComponent implements OnInit {
   like: boolean[] = [];
   userFavorites: Favorite[] = [];
 
+
   favorite: Partial<Favorite> = {
     userId: 0,
     recipeId: 0

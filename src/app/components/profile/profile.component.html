@@ -37,9 +37,9 @@
     <h2>Favorites</h2>
   </div>
   <div class="container d-flex flex-wrap">
-    <div *ngFor="let item of userFavs" class="card m-1" style="width: 18rem;">
-      <h3 class="card-title">{{item.title}}</h3>
-      <img src="{{item.image}}" class="card-img-top img-fluid">
+    <div *ngFor="let item of userFavs" class="card m-1 border-dark bg-danger bg-gradient" style="width: 18rem;">
+      <h3 class="card-title fw-semibold text-decoration-underline p-2">{{item.title}}</h3>
+      <img src="{{item.image}}" class="card-img-top img-fluid p-3">
       <div class="card-body">
         <button type="button" class="btn btn-primary" [routerLink]="['/detail',item.id]"
           routerLinkActive="router-link-active">Details</button>

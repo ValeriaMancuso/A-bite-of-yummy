@@ -18,6 +18,7 @@ export interface Favorite {
   userId: number
 }
 
+
 @Injectable({
   providedIn: 'root'
 })
