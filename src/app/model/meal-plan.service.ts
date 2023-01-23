@@ -7,7 +7,6 @@ import { Favorite, Recipe } from './recipe.service';
 
 export interface List {
     id: number,
-    userId: number,
     title: string,
     servings: number,
     minutes: number

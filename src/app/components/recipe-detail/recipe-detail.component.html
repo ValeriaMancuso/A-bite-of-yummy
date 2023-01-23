@@ -1,7 +1,7 @@
 
 <div class="container" *ngIf="recipe">
     <h2>{{recipe.title}}</h2>
-    <img src="{{recipe.image}}">
+    <img src="{{recipe.image}}" class="img-fluid">
     <h3 class="pt-2 fw-semibold">INSTRUCTIONS:</h3>
     <p [innerHTML] = "recipe.instructions"></p>
 
