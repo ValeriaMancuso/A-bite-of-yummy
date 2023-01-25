@@ -10,7 +10,8 @@
         <label for="pass">Password</label>
         <input name="password" required class="form-control" ngModel id="pass" type="password" />
       </div>
-      <button type="submit" [disabled]="form.invalid" class="btn btn-primary mt-4">Accedi</button>
+      <button type="submit" [disabled]="form.invalid" class="btn btn-primary mt-4">Log In</button>
+      <p>Oppure </p><a [routerLink]="['profile']" routerLinkActive="active">Register</a>
     </form>
   </div>
 </div>
